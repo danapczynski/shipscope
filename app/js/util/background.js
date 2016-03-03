@@ -53,8 +53,8 @@ var Background = function() {
       })
     },
 
-    fetchApiKeyFromLocalStorage = function(done) {
-      chrome.storage.sync.get('api_key', function(value) {
+    fetchOptionsFromLocalStorage = function(done) {
+      chrome.storage.sync.get(null, function(value) {
         options = value
         done()
       })
@@ -96,7 +96,7 @@ var Background = function() {
       initIntercom()
       initializePolling()
       async.series([
-        fetchApiKeyFromLocalStorage,
+        fetchOptionsFromLocalStorage,
         initializeBuildWatcher,
         fetchProjectsFromCodeship
       ])
