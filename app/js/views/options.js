@@ -8,6 +8,7 @@ var OptionsView = Backbone.Marionette.LayoutView.extend({
       msg: {
         save: chrome.i18n.getMessage('save'),
         codeship_api_key: chrome.i18n.getMessage('codeship_api_key'),
+        codeship_project_id: chrome.i18n.getMessage('codeship_project_id'),
         copy_api_key: chrome.i18n.getMessage('copy_api_key'),
         paste_api_key: chrome.i18n.getMessage('paste_api_key'),
       },
@@ -60,6 +61,7 @@ var OptionsView = Backbone.Marionette.LayoutView.extend({
 
     this.listenForApiResult()
     this.model.set({api_key: $('textarea#api_key').val()})
+    this.model.set({project_id: $('textarea#project_id').val()})
     App.intercom.postMessage({type: 'options.set', data: this.model.attributes})
   }
 });
