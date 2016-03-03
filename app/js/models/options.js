@@ -1,6 +1,7 @@
 var OptionsModel = Backbone.Model.extend({
   defaults: {
-    api_key: ''
+    api_key: '',
+    project_id: ''
   },
 
   isEmptyApiKey: function() {
@@ -11,7 +12,7 @@ var OptionsModel = Backbone.Model.extend({
   set: function(attrs, options) {
     Backbone.Model.prototype.set.apply(this, arguments);
 
-    if (attrs.api_key && (!options || !options.quiet)) {
+    if ((attrs.api_key || attrs.project_id) && (!options || !options.quiet)) {
       chrome.storage.sync.set(attrs);
     }
   },

@@ -1,7 +1,8 @@
 var CodeshipApi = (function() {
   var
     API_HOST = "https://codeship.com/api",
-    PROJECT_URL = API_HOST + "/v2/projects.json",
+    ALL_PROJECTS_URL = API_HOST + "/v2/projects.json",
+    SINGLE_PROJECT_URL = API_HOST + "/v1/projects/"
     BUILD_URL = API_HOST + "/v1/builds.json",
 
     fetchAll = function(options, callback) {
@@ -43,9 +44,15 @@ var CodeshipApi = (function() {
     fetchProjects = function(options, callback) {
       if (options && options.api_key != undefined) {
         var params = 'api_key=' + options.api_key
-        $.getJSON(PROJECT_URL, params)
+        $.getJSON(projectUrl(options), params)
           .done( function(response) {
-            projectsCollection = new Projects(response.projects)
+            var response_projects
+            if (options.project_id) {
+              response_projects = [response]
+            } else {
+              response_projects = response.projects
+            }
+            projectsCollection = new Projects(response_projects)
             callback(projectsCollection)
           })
           .fail(function(err) {
@@ -53,6 +60,16 @@ var CodeshipApi = (function() {
             callback(null, {type: 'error', data: err})
           });
       }
+    },
+
+    projectUrl = function(options) {
+      var url
+      if (options.project_id) {
+        url = (SINGLE_PROJECT_URL + options.project_id + ".json")
+      } else {
+        url = ALL_PROJECTS_URL
+      }
+      return url
     }
 
   return {

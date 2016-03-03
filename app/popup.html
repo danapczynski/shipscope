@@ -67,6 +67,8 @@
           <label for='api_key' class='control-label'><strong>{{ msg.codeship_api_key }}</strong></label>
           <textarea id='api_key' class='form-control' rows='2' placeholder='{{ msg.paste_api_key }}' autofocus>{{ api_key }}</textarea>
           <span class='help-block'>{{ msg.copy_api_key }}</span>
+          <label for='project_id' class='control-label'><strong>{{ msg.codeship_project_id }}</strong></label>
+          <textarea id='project_id' class='form-control' rows='1'>{{ project_id }}</textarea>
         </div>
         <div class='form-group pull-right'>
           <button id='options_submit' type="submit" class='btn btn-primary btn-xs'>{{ msg.save }}</button>

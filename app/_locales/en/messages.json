@@ -23,6 +23,10 @@
     "message": "Codeship API Key",
     "description": "do not translate"
   },
+  "codeship_project_id": {
+    "message": "Codeship Project ID",
+    "description": "do not translate"
+  },
   "copy_api_key": {
     "message": "Copy your API Key from your Codeship account",
     "description": "help in Options panel"
