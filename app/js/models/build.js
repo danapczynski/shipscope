@@ -15,6 +15,10 @@ var Build = Backbone.Model.extend({
 
   getStatus: function() {
     return Build.STATES[this.attributes.status]
+  },
+
+  getStartedAt: function() {
+    return Date(this.attributes.started_at)
   }
 
 }, {

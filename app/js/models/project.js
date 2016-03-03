@@ -4,10 +4,10 @@ var Project = Backbone.Model.extend({
   getStatus: function() {
     var
       builds = this.attributes.builds,
-      mostRecentBuilds = {},
       projectStatus = Build.STATES.success,
       hasRunningBuild,
-      lastMasterBuild;
+      lastMasterBuild,
+      mostRecentBuild;
 
     // we lose the backbone collection,
     // init builds collection after passing to the frontend
@@ -20,9 +20,16 @@ var Project = Backbone.Model.extend({
       if (hasRunningBuild) {
         projectStatus = Build.STATES.testing
       } else {
-        lastMasterBuild = builds.findWhere({branch: 'master'})
-        if (lastMasterBuild) {
-          projectStatus = lastMasterBuild.getStatus()
+        // Un-comment the below if it is preferable for the project status
+        // to reflect the state of the 'master' branch
+        //
+        // lastMasterBuild = builds.findWhere({branch: 'master'})
+        // if (lastMasterBuild) {
+        //   projectStatus = lastMasterBuild.getStatus()
+        // }
+        mostRecentBuild = builds.sort().first();
+        if (mostRecentBuild) {
+          projectStatus = mostRecentBuild.getStatus()
         }
       }
     }
