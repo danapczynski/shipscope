@@ -60,6 +60,10 @@ var MainLayout = Backbone.Marionette.LayoutView.extend({
     $('footer').show()
     this.projectsView = new ProjectsView({collection: this.collection})
     this.project_list.show(this.projectsView)
+
+    if (this.options.get('project_id')) {
+      this.onShowProject(this.options.get('project_id'))
+    }
   },
 
   onShowProject: function(projectId) {
