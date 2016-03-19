@@ -71,7 +71,7 @@ var MainLayout = Backbone.Marionette.LayoutView.extend({
 
     if (project) {
       var builds = new Builds(project.get('builds'))
-      var buildsView = new BuildsView({collection: builds}, {projectId: projectId})
+      var buildsView = new BuildsView({collection: builds}, {projectId: projectId, repositoryName: project.get('repository_name')})
       this.project_list.show(buildsView)
     }
   },

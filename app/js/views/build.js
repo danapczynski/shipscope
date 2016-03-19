@@ -19,12 +19,14 @@ var BuildView = Backbone.Marionette.ItemView.extend({
         }
         return STATES[this.status];
       },
-      projectId: this.projectId
+      projectId: this.projectId,
+      repositoryName: this.repositoryName
     }
   },
 
   initialize: function(options) {
     this.projectId = options.projectId
+    this.repositoryName = options.repositoryName
   },
 
   onStatusChange: function() {
