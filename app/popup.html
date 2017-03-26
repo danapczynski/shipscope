@@ -4,6 +4,7 @@
     <title>Shipscope</title>
     <link rel='stylesheet' href="css/bootstrap/bootstrap.min.css">
     <link rel='stylesheet' href="css/shipscope.css">
+    <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
   <body>
     <script id='mainLayout' type='text/x-handlebars-template'>
@@ -28,14 +29,19 @@
     <!-- Build Item -->
     <script id='build_item' type='text/x-handlebars-template'>
       <div class='branch_info'>
-        <a target='codeship' href='http://www.codeship.com/projects/{{projectId}}/builds/{{id}}'>
-          <div class='branch_name'><strong>{{ branch }}</strong></div>
-        </a>
+        <div class='branch_name'>
+          <a target='codeship' href='http://app.codeship.com/projects/{{projectId}}/builds/{{id}}'>
+            <strong>{{ branch }}</strong>
+          </a>
+        </div>
         <div class='commit_message'>{{ message }}</div>
       </div>
       <div class='branch_status'>
         <a class='build_status' href='#' data-id='{{ id }}' title='Restart this build'>
           <span class='glyphicon glyphicon-repeat alert-{{ getStatusIcon }}'></span>
+        </a>
+        <a target='commit' href='https://github.com/{{repositoryName}}/commit/{{commit_id}}'>
+          <i class="fa fa-git fa-20"></i>
         </a>
       </div>
     </script>

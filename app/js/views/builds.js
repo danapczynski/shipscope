@@ -33,11 +33,13 @@ var BuildsView = Backbone.Marionette.CollectionView.extend({
 
   childViewOptions: function() {
     return {
-      projectId: this.projectId
+      projectId: this.projectId,
+      repositoryName: this.repositoryName
     }
   },
 
   initialize: function(attrs, options) {
     this.projectId = options.projectId;
+    this.repositoryName = options.repositoryName;
   },
 });

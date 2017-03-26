@@ -109,7 +109,7 @@ div.branch_info a:hover {
 }
 
 div.branch_info .commit_message, div.branch_info .branch_name {
-  width: 250px;
+  width: 220px;
   font-size: 13px;
   white-space: nowrap;
   overflow: hidden;
@@ -174,3 +174,8 @@ span.glyphicon-repeat.alert-info {
 .alert-info {
   background-color: #5a95e5;
 }
+
+.fa.fa-20 {
+  font-size:20px;
+}
+
